@@ -1,0 +1,14 @@
+[Unit]
+Description=App collects data on weather then uploads to CosmosDB
+StartLimitIntervalSec=60
+StartLimitBurst=5 
+
+[Service]
+User=alex
+WorkingDirectory=/home/alex/$USER/collect_weather
+Restart=on-failure
+RestartSec=10
+ExecStart=/bin/bash /home/$USER/collect_weather/startup.sh
+
+[Install]
+WantedBy=multi-user.target
